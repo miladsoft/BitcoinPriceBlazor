@@ -1,0 +1,18 @@
+﻿@page "/"
+
+<PageTitle>Current Bitcoin Price</PageTitle>
+
+@inject BitcoinPriceService BitcoinPriceService
+
+<h3>Current Bitcoin Price</h3>
+<p>@bitcoinPrice USD</p>
+
+@code {
+    private decimal bitcoinPrice;
+
+    protected override async Task OnInitializedAsync()
+    {
+        bitcoinPrice = await BitcoinPriceService.GetBitcoinPriceAsync();
+    }
+}
+
